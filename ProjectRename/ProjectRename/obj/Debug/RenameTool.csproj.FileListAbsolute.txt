@@ -6,3 +6,4 @@ F:\rtmc\ProjectRename\ProjectRename\ProjectRename\obj\Debug\RenameTool.Propertie
 F:\rtmc\ProjectRename\ProjectRename\ProjectRename\obj\Debug\RenameTool.csproj.GenerateResource.Cache
 F:\rtmc\ProjectRename\ProjectRename\ProjectRename\obj\Debug\RenameTool.exe
 F:\rtmc\ProjectRename\ProjectRename\ProjectRename\obj\Debug\RenameTool.pdb
+F:\rtmc\ProjectRename\ProjectRename\ProjectRename\obj\Debug\RenameTool.csprojResolveAssemblyReference.cache

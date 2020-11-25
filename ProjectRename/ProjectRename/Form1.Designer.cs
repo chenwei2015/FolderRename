@@ -45,6 +45,9 @@
             this.button3 = new System.Windows.Forms.Button();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.filterbyfiletype = new System.Windows.Forms.CheckBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.filterbyfile = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // operatorfolder
@@ -76,7 +79,7 @@
             // button2
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(301, 318);
+            this.button2.Location = new System.Drawing.Point(301, 408);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(49, 23);
             this.button2.TabIndex = 3;
@@ -148,16 +151,16 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.checkedListBox1.CheckOnClick = true;
             this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Location = new System.Drawing.Point(90, 112);
+            this.checkedListBox1.Location = new System.Drawing.Point(90, 132);
             this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(321, 196);
+            this.checkedListBox1.Size = new System.Drawing.Size(321, 260);
             this.checkedListBox1.TabIndex = 10;
             this.checkedListBox1.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.checkedListBox1_ItemCheck);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 112);
+            this.label4.Location = new System.Drawing.Point(12, 132);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(77, 12);
             this.label4.TabIndex = 11;
@@ -166,12 +169,13 @@
             // button3
             // 
             this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.Location = new System.Drawing.Point(356, 318);
+            this.button3.Location = new System.Drawing.Point(356, 408);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(57, 23);
             this.button3.TabIndex = 12;
             this.button3.Text = "退出";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // checkBox3
             // 
@@ -179,7 +183,7 @@
             this.checkBox3.AutoSize = true;
             this.checkBox3.Checked = true;
             this.checkBox3.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox3.Location = new System.Drawing.Point(89, 322);
+            this.checkBox3.Location = new System.Drawing.Point(89, 412);
             this.checkBox3.Name = "checkBox3";
             this.checkBox3.Size = new System.Drawing.Size(48, 16);
             this.checkBox3.TabIndex = 13;
@@ -196,11 +200,49 @@
             this.label5.TabIndex = 14;
             this.label5.Text = "替换方式";
             // 
+            // filterbyfiletype
+            // 
+            this.filterbyfiletype.AutoSize = true;
+            this.filterbyfiletype.Checked = true;
+            this.filterbyfiletype.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.filterbyfiletype.Location = new System.Drawing.Point(90, 110);
+            this.filterbyfiletype.Name = "filterbyfiletype";
+            this.filterbyfiletype.Size = new System.Drawing.Size(72, 16);
+            this.filterbyfiletype.TabIndex = 15;
+            this.filterbyfiletype.Text = "文件类型";
+            this.filterbyfiletype.UseVisualStyleBackColor = true;
+            this.filterbyfiletype.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.filterbyfiletype.Click += new System.EventHandler(this.checkBox1_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(12, 111);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(53, 12);
+            this.label6.TabIndex = 16;
+            this.label6.Text = "选择方式";
+            // 
+            // filterbyfile
+            // 
+            this.filterbyfile.AutoSize = true;
+            this.filterbyfile.Location = new System.Drawing.Point(179, 110);
+            this.filterbyfile.Name = "filterbyfile";
+            this.filterbyfile.Size = new System.Drawing.Size(48, 16);
+            this.filterbyfile.TabIndex = 17;
+            this.filterbyfile.Text = "文件";
+            this.filterbyfile.UseVisualStyleBackColor = true;
+            this.filterbyfile.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
+            this.filterbyfile.Click += new System.EventHandler(this.checkBox2_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(435, 349);
+            this.ClientSize = new System.Drawing.Size(435, 439);
+            this.Controls.Add(this.filterbyfile);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.filterbyfiletype);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.checkBox3);
             this.Controls.Add(this.button3);
@@ -218,7 +260,7 @@
             this.Controls.Add(this.operatorfolder);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
-            this.Text = "重命名工具 - 1.00";
+            this.Text = "重命名工具 - 1.02";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -242,6 +284,9 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.CheckBox checkBox3;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.CheckBox filterbyfiletype;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.CheckBox filterbyfile;
     }
 }
 

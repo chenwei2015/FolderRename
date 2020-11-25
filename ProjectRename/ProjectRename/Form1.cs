@@ -26,18 +26,34 @@ namespace ProjectRename
             checkedListBox1.Items.Clear();
             DirectoryInfo Dir = new DirectoryInfo(path);
             {
+             
                 foreach (FileInfo f in Dir.GetFiles("*", SearchOption.AllDirectories)) //查找文件
                 {
-                  if (!filetypes.Contains(f.Extension))
-                  {
-                      filetypes.Add(f.Extension);
-                      checkedListBox1.Items.Add(f.Extension);
-                      checkedListBox1.SetItemChecked(checkedListBox1.Items.Count-1,true);
-                      if (f.Extension.ToLower().Contains("xls")|| f.Extension.ToLower().Contains("pdf"))
-                      {
-                          checkedListBox1.SetItemChecked(checkedListBox1.Items.Count - 1, false);
-                      }
-                  }
+                    if (filterbyfiletype.Checked)
+                    {
+                        if (!filetypes.Contains(f.Extension))
+                        {
+                            filetypes.Add(f.Extension);
+                            checkedListBox1.Items.Add(f.Extension);
+                            checkedListBox1.SetItemChecked(checkedListBox1.Items.Count - 1, true);
+                            if (f.Extension.ToLower().Contains("xls") || f.Extension.ToLower().Contains("pdf"))
+                            {
+                                checkedListBox1.SetItemChecked(checkedListBox1.Items.Count - 1, false);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        filetypes.Add(f.FullName);
+                        checkedListBox1.Items.Add(f.Name);
+                        checkedListBox1.SetItemChecked(checkedListBox1.Items.Count - 1, true);
+                        if (f.Extension.ToLower().Contains("xls") || f.Extension.ToLower().Contains("pdf"))
+                        {
+                            checkedListBox1.SetItemChecked(checkedListBox1.Items.Count - 1, false);
+                        }
+
+                    }
+                 
                 }
               
             }
@@ -72,18 +88,18 @@ namespace ProjectRename
 
         bool RenameContent(string name, string repls, string tor)
         {
-          //  try
+            try
             {
                 string str = File.ReadAllText(name);
                 str = str.Replace(repls, tor);
                 File.WriteAllText(name, str);
                 replaced = true;
              }
-            //catch(Exception e)
-            //{
-            //    MessageBox.Show(e.Message);
-            //    return false;
-            //}
+            catch(Exception e)
+            {
+                MessageBox.Show(e.Message);
+                return false;
+            }
             return true;
         }
 
@@ -91,41 +107,67 @@ namespace ProjectRename
         bool Replace(string path)
         {
             replaced = false;
-            DirectoryInfo Dir = new DirectoryInfo(path);          
+            if (filterbyfiletype.Checked)
             {
-
-                for (int i = 0; i < checkedListBox1.Items.Count; i++)
+                DirectoryInfo Dir = new DirectoryInfo(path);
                 {
-                    if (checkedListBox1.GetItemChecked(i))
+
+                    for (int i = 0; i < checkedListBox1.Items.Count; i++)
                     {
-                        foreach (FileInfo f in Dir.GetFiles("*" + filetypes[i], SearchOption.AllDirectories)) //查找文件
+                        if (checkedListBox1.GetItemChecked(i))
                         {
-                            if (renamect.Checked)
+                            foreach (FileInfo f in Dir.GetFiles("*" + filetypes[i], SearchOption.AllDirectories)) //查找文件
                             {
-                                if (!RenameContent(f.FullName, source.Text, dest.Text))
+                                if (renamect.Checked)
                                 {
-                                    return false;
-                                }
-                            }
-                            if(RenameFile.Checked)
-                            {
-                                if (f.FullName.EndsWith(filetypes[i]))
-                                {
-                                    if(!Rename(f.FullName, source.Text, dest.Text) )
+                                    if (!RenameContent(f.FullName, source.Text, dest.Text))
                                     {
                                         return false;
                                     }
-                                    
                                 }
+                                if (RenameFile.Checked)
+                                {
+                                    if (f.FullName.EndsWith(filetypes[i]))
+                                    {
+                                        if (!Rename(f.FullName, source.Text, dest.Text))
+                                        {
+                                            return false;
+                                        }
+
+                                    }
+                                }
+
+
                             }
-                            
-                           
                         }
                     }
+
+
                 }
-             
-               
             }
+            else
+            {
+                foreach (string s in filetypes)
+                {
+                     if (renamect.Checked)
+                    {
+                        if (!RenameContent(s, source.Text, dest.Text))
+                        {
+                            return false;
+                        }
+                    }
+                    if (RenameFile.Checked)
+                    {                       
+                        if (!Rename(s, source.Text, dest.Text))
+                        {
+                            return false;
+                        }
+
+                        
+                    }
+                }
+            }
+           
             return true;
         }
 
@@ -137,7 +179,12 @@ namespace ProjectRename
                 return;
             }
             if(Replace(operatorfolder.Text))
+            {
+                if (Directory.Exists(operatorfolder.Text))
+                    searchTypes(operatorfolder.Text);
                 MessageBox.Show("替换成功");
+            }
+               
         }
 
         private void checkBox3_CheckedChanged(object sender, EventArgs e)
@@ -151,6 +198,36 @@ namespace ProjectRename
         private void checkedListBox1_ItemCheck(object sender, ItemCheckEventArgs e)
         {
             
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (Directory.Exists(operatorfolder.Text))
+                searchTypes(operatorfolder.Text);
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void checkBox1_Click(object sender, EventArgs e)
+        {
+            filterbyfiletype.Checked = true;
+            filterbyfile.Checked = !filterbyfiletype.Checked;
+            label4.Text = "文件类型选择";
+        }
+
+        private void checkBox2_Click(object sender, EventArgs e)
+        {
+            filterbyfile.Checked = true;
+            filterbyfiletype.Checked = !filterbyfile.Checked;
+            label4.Text = "文件选择";
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
