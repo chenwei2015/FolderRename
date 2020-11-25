@@ -1,0 +1,8 @@
+F:\rtmc\ProjectRename\ProjectRename\ProjectRename\bin\Debug\RenameTool.exe.config
+F:\rtmc\ProjectRename\ProjectRename\ProjectRename\bin\Debug\RenameTool.exe
+F:\rtmc\ProjectRename\ProjectRename\ProjectRename\bin\Debug\RenameTool.pdb
+F:\rtmc\ProjectRename\ProjectRename\ProjectRename\obj\Debug\ProjectRename.Form1.resources
+F:\rtmc\ProjectRename\ProjectRename\ProjectRename\obj\Debug\RenameTool.Properties.Resources.resources
+F:\rtmc\ProjectRename\ProjectRename\ProjectRename\obj\Debug\RenameTool.csproj.GenerateResource.Cache
+F:\rtmc\ProjectRename\ProjectRename\ProjectRename\obj\Debug\RenameTool.exe
+F:\rtmc\ProjectRename\ProjectRename\ProjectRename\obj\Debug\RenameTool.pdb

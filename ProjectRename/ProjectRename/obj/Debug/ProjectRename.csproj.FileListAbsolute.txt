@@ -1,0 +1,9 @@
+F:\rtmc\ProjectRename\ProjectRename\ProjectRename\bin\Debug\ProjectRename.exe.config
+F:\rtmc\ProjectRename\ProjectRename\ProjectRename\bin\Debug\ProjectRename.exe
+F:\rtmc\ProjectRename\ProjectRename\ProjectRename\bin\Debug\ProjectRename.pdb
+F:\rtmc\ProjectRename\ProjectRename\ProjectRename\obj\Debug\ProjectRename.csprojResolveAssemblyReference.cache
+F:\rtmc\ProjectRename\ProjectRename\ProjectRename\obj\Debug\ProjectRename.Form1.resources
+F:\rtmc\ProjectRename\ProjectRename\ProjectRename\obj\Debug\ProjectRename.Properties.Resources.resources
+F:\rtmc\ProjectRename\ProjectRename\ProjectRename\obj\Debug\ProjectRename.csproj.GenerateResource.Cache
+F:\rtmc\ProjectRename\ProjectRename\ProjectRename\obj\Debug\ProjectRename.exe
+F:\rtmc\ProjectRename\ProjectRename\ProjectRename\obj\Debug\ProjectRename.pdb
